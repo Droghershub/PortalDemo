@@ -3,6 +3,8 @@
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
+ob_start(); // Start output buffering
+
 define('LARAVEL_START', microtime(true));
 
 /*
@@ -53,3 +55,5 @@ $response = $kernel->handle(
 )->send();
 
 $kernel->terminate($request, $response);
+
+ob_end_flush(); // Flush and end output buffering
