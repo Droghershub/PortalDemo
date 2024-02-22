@@ -50,13 +50,6 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
-// Check if the request was made over HTTPS via a reverse proxy
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
-    // If the original request was made over HTTPS, set the application URL to HTTPS
-    Request::setTrustedProxies([$_SERVER['REMOTE_ADDR']], Request::HEADER_X_FORWARDED_PROTO);
-    URL::forceScheme('https');
-}
-
 $response = $kernel->handle(
     $request = Request::capture()
 )->send();
