@@ -70,7 +70,7 @@
                         <!-- Form to trigger delete action -->
                         <form action="{{ route('banners.destroy', $banner->id) }}" method="post"
                             style="display:inline;">
-                            @csrf
+                            
                             @method('delete')
                             <button type="submit" class="btn btn-danger"
                                 onclick="return confirm('Are you sure you want to delete this banner?')">Delete</button>
@@ -115,7 +115,7 @@
                             <div class="modal-body">
                                 <!-- Your edit form goes here -->
                                 <form method="post" action="{{ route('banners.update', $banner->id) }}">
-                                    @csrf
+                                    
                                     @method('PUT')
 
                                     <div class="mb-3">
@@ -193,7 +193,7 @@
                 <div class="modal-body">
                     <!-- Your create form goes here -->
                     <form method="post" action="{{ route('banners.store') }}" enctype="multipart/form-data">
-                        @csrf
+                        
 
                         <div class="mb-3">
                             <label for="createName" class="form-label">Name</label>

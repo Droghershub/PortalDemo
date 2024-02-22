@@ -88,7 +88,7 @@
                         <div class="modal-body">
                             <!-- Your create form goes here -->
                             <form method="post" action="{{ route('brands.store') }}" enctype="multipart/form-data">
-                                @csrf
+                                
 
                                 <div class="mb-3">
                                     <label for="contact_id" class="form-label">Contact ID:</label>
@@ -247,7 +247,7 @@
                             <!-- Your edit form goes here -->
                             <form method="post" action="{{ route('brands.update', $brand->id) }}"
                                 enctype="multipart/form-data">
-                                @csrf
+                            
                                 @method('PUT')
 
                                 <div class="mb-3">
@@ -291,7 +291,7 @@
                             </form>
                             <form action="{{ route('brands.destroy', $brand->id) }}" method="post"
                                 style="display:inline;">
-                                @csrf
+                            
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger "
                                     onclick="return confirm('Are you sure you want to delete this brand?')">Delete</button>

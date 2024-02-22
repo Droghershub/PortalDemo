@@ -18,7 +18,7 @@
                         @endif
 
                         <form action="{{ route('login') }}" method="post">
-                            @csrf
+                            
                             @method('post')
                             <div class="form-group">
                                 <label>Email</label>

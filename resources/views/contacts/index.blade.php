@@ -90,7 +90,7 @@
                     <div class="modal-body">
                         <!-- Your create form goes here -->
                         <form method="post" action="{{ route('contacts.store') }}" enctype="multipart/form-data">
-                            @csrf
+                            
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name:</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -268,7 +268,7 @@
                             <!-- Your edit form goes here -->
                             <form method="post" action="{{ route('contacts.update', $contact->id) }}"
                                 enctype="multipart/form-data">
-                                @csrf
+                                
                                 @method('PUT')
                                 <div class="mb-3">
                                     <label for="editName" class="form-label">Name:</label>
@@ -315,7 +315,7 @@
 
                                 <form action="{{ route('contacts.destroy', $contact->id) }}" method="post"
                                     style="display:inline;">
-                                    @csrf
+                                    
                                     @method('delete')
                                     <div style="display: inline; margin-top: -33px;">
                                         <button type="submit" class="btn btn-danger"

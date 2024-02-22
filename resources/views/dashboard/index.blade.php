@@ -316,7 +316,7 @@
 
                 <!-- Soft Delete Button -->
                 <form method="post" action="{{ route('derank.search', ['id' => $item->id]) }}" style="display:inline;">
-                    @csrf
+                    
                     @method('delete') <!-- Use 'delete' method for soft delete -->
 
                     <!-- Soft Delete Button -->

@@ -90,7 +90,7 @@
                     <div class="modal-body">
                         <!-- Your create form goes here -->
                         <form method="post" action="{{ route('users.store') }}" enctype="multipart/form-data">
-                            @csrf
+                            
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name:</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -254,7 +254,7 @@
                             <!-- Your edit form goes here -->
                             <form method="post" action="{{ route('users.update', $user->id) }}"
                                 enctype="multipart/form-data">
-                                @csrf
+                                
                                 @method('PUT')
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name:</label>
@@ -306,7 +306,7 @@
                             </form>
                             <form action="{{ route('users.destroy', $user->id) }}" method="post"
                                 style="display:inline;">
-                                @csrf
+                                
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger "
                                     onclick="return confirm('Are you sure you want to delete this brand?')">Delete</button>
