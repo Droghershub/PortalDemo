@@ -193,7 +193,7 @@
                 <div class="modal-body">
                     <!-- Your create form goes here -->
                     <form method="post" action="{{ route('banners.store') }}" enctype="multipart/form-data">
-                        
+                        @csrf
 
                         <div class="mb-3">
                             <label for="createName" class="form-label">Name</label>

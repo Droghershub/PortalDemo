@@ -291,7 +291,7 @@
                             </form>
                             <form action="{{ route('brands.destroy', $brand->id) }}" method="post"
                                 style="display:inline;">
-                            
+                                @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger "
                                     onclick="return confirm('Are you sure you want to delete this brand?')">Delete</button>

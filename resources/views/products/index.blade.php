@@ -129,7 +129,7 @@
                     <div class="modal-body">
                         <!-- Your create form goes here -->
                         <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
-                            
+                            @csrf
 
                             <div class="mb-3">
                                 <label for="brand_id" class="form-label">Brand</label>
@@ -222,7 +222,7 @@
             <div class="modal-body">
                 <!-- Form for Bulk Upload -->
                 <form action="{{ route('products.import') }}" method="POST" enctype="multipart/form-data">
-                    
+                    @csrf
                     <div class="form-group">
                         <label for="file">Choose CSV File</label>
                         <input type="file" class="form-control-file" id="file" name="file" accept=".csv">
@@ -353,7 +353,7 @@
                         <div class="modal-body">
                             <!-- Your create form goes here -->
                             <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
-                                
+                                @csrf
 
                                 <div class="mb-3">
                                     <label for="brand_id" class="form-label">Brand</label>
@@ -449,7 +449,7 @@
                         <div class="modal-body">
                             <!-- Form for Bulk Upload -->
                             <form action="{{ route('products.import') }}" method="POST" enctype="multipart/form-data">
-                                
+                                @csrf
                                 <div class="form-group">
                                     <label for="file">Choose CSV File</label>
                                     <input type="file" class="form-control-file" id="file" name="file"
@@ -522,7 +522,7 @@
                                 <!-- Your edit form goes here -->
                                 <form method="post" action="{{ route('products.update', $product->id) }}"
                                     enctype="multipart/form-data">
-                                    
+                                    @csrf
                                     @method('PUT')
 
                                     <div class="mb-3">
@@ -615,7 +615,7 @@
                                 </form>
                                 <form action="{{ route('products.destroy', $product->id) }}" method="post"
                                     style="display:inline;">
-                                    
+                                    @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-danger "
                                         onclick="return confirm('Are you sure you want to delete this brand?')">Delete</button>

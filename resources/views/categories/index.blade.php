@@ -72,7 +72,7 @@
                 <div class="modal-body">
                     <!-- Your create form goes here -->
                     <form method="post" action="{{ route('categories.store') }}" enctype="multipart/form-data">
-                        
+                        @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Name:</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -149,7 +149,7 @@
                     <div class="modal-body">
                         <!-- Your edit form goes here -->
                         <form method="post" action="{{ route('categories.update', $category->id) }}" enctype="multipart/form-data">
-                            
+                            @csrf
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="editName" class="form-label">Name:</label>
@@ -176,7 +176,7 @@
                                     <button type="submit" class="btn btn-primary float-end">Update Category</button>
                                 </form>
                                 <form action="{{ route('categories.destroy', $category->id) }}" method="post" style="display:inline;">
-                                    
+                                    @csrf
                                     @method('delete')
                                     <div style="display: inline;">
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this category?')">Delete</button>
