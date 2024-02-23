@@ -2,27 +2,30 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
-use Illuminate\Session\TokenMismatchException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class VerifyCsrfToken extends Middleware
 {
     /**
-     * Indicates whether the XSRF-TOKEN cookie should be set on the response.
-     *
-     * @var bool
-     */
-    protected $addHttpCookie = true;
-
-    /**
      * The URIs that should be excluded from CSRF verification.
      *
-     * @var array
+     * @var array<int, string>
      */
     protected $except = [
         //
     ];
-}
 
+    /**
+     * The CSRF token field name.
+     *
+     * @var string
+     */
+    protected $fieldName = '_token';
+
+    /**
+     * The CSRF token header key.
+     *
+     * @var string
+     */
+    protected $headerKey = 'X-CSRF-TOKEN'; // Update this line
+}
