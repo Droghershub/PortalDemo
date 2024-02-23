@@ -62,5 +62,5 @@ Route::middleware(['web', 'auth', 'verified'])->group(function () {
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('login', [AuthController::class, 'index'])->name('login');
-    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::post('login', [AuthController::class, 'login'])->name('login')->middleware('throttle:2,1');
 });
