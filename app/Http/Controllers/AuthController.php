@@ -31,10 +31,12 @@ class AuthController extends Controller
      * Handle user login.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function login(Request $request)
     {
+        dd($request->all());
         // Validate the user's input
         $request->validate([
             "email" => "required|email",
