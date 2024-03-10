@@ -2,27 +2,29 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Middleware\TrustProxies as Middleware;
+use Closure;
 use Illuminate\Http\Request;
 
-class TrustProxies extends Middleware
+class ResolveTrustedProxies
 {
     /**
-     * The trusted proxies for this application.
+     * Handle an incoming request.
      *
-     * @var array<int, string>|string|null
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
      */
-    protected $proxies;
+    public function handle($request, Closure $next)
+    {
+        // Resolve domain name to IP address
+        $trustedProxies = [
+            // Replace with the IP address of droghers-hub-portaldemo-v1-uat.azurewebsites.net
+            '20.119.8.58', // IP address obtained by resolving the domain name
+        ];
 
-    /**
-     * The headers that should be used to detect proxies.
-     *
-     * @var int
-     */
-    protected $headers =
-        Request::HEADER_X_FORWARDED_FOR |
-        Request::HEADER_X_FORWARDED_HOST |
-        Request::HEADER_X_FORWARDED_PORT |
-        Request::HEADER_X_FORWARDED_PROTO |
-        Request::HEADER_X_FORWARDED_AWS_ELB;
+        // Set trusted proxies dynamically
+        $request->setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_ALL);
+
+        return $next($request);
+    }
 }
