@@ -3,9 +3,11 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Middleware\TrustProxies as Middleware;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
-class ResolveTrustedProxies
+class TrustProxies extends Middleware
 {
     /**
      * Handle an incoming request.
@@ -16,16 +18,18 @@ class ResolveTrustedProxies
      */
     public function handle($request, Closure $next)
     {
-        // Resolve domain names to IP addresses
+        // Define HEADER_X_FORWARDED_ALL manually
+        $headerXForwardedAll = 0b0000011111;
+    
+        // Get the IP address and port from the request headers
         $trustedProxies = [
-            // Replace example.com with your actual domain name
-            gethostbyname('https://droghers-hub-portaldemo-v1-uat.azurewebsites.net/'),
-            // Add more domain names as needed
+            $request->getClientIp() . ':' . $request->getPort(),
         ];
-
+    
         // Set trusted proxies dynamically
-        $request->setTrustedProxies($trustedProxies, Request::HEADER_X_FORWARDED_ALL);
-
+        $request->setTrustedProxies($trustedProxies, $headerXForwardedAll);
+    
         return $next($request);
     }
 }
+
