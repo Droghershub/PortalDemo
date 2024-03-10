@@ -19,7 +19,7 @@ class ResolveTrustedProxies
         // Resolve domain name to IP address
         $trustedProxies = [
             // Replace with the IP address of droghers-hub-portaldemo-v1-uat.azurewebsites.net
-            '20.119.8.58', // IP address obtained by resolving the domain name
+            '20.119.8.58:443', // IP address obtained by resolving the domain name
         ];
 
         // Set trusted proxies dynamically
