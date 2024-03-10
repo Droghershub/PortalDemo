@@ -16,10 +16,11 @@ class ResolveTrustedProxies
      */
     public function handle($request, Closure $next)
     {
-        // Resolve domain name to IP address
+        // Resolve domain names to IP addresses
         $trustedProxies = [
-            // Replace with the IP address of droghers-hub-portaldemo-v1-uat.azurewebsites.net
-            '20.119.8.58:443', // IP address obtained by resolving the domain name
+            // Replace example.com with your actual domain name
+            gethostbyname('https://droghers-hub-portaldemo-v1-uat.azurewebsites.net/'),
+            // Add more domain names as needed
         ];
 
         // Set trusted proxies dynamically
