@@ -2,34 +2,28 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Illuminate\Http\Middleware\TrustProxies as Middleware;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class TrustProxies extends Middleware
 {
     /**
-     * Handle an incoming request.
+     * The trusted proxies for this application.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @var array|string|null
      */
-    public function handle($request, Closure $next)
-    {
-        // Define HEADER_X_FORWARDED_ALL manually
-        $headerXForwardedAll = 0b0000011111;
-    
-        // Get the IP address and port from the request headers
-        $trustedProxies = [
-            $request->getClientIp() . ':' . $request->getPort(),
-        ];
-    
-        // Set trusted proxies dynamically
-        $request->setTrustedProxies($trustedProxies, $headerXForwardedAll);
-    
-        return $next($request);
-    }
+    protected $proxies;
+
+    /**
+     * The headers that should be used to detect proxies.
+     *
+     * @var int
+     */
+    protected $headers =
+        Request::HEADER_X_FORWARDED_FOR |
+        Request::HEADER_X_FORWARDED_HOST |
+        Request::HEADER_X_FORWARDED_PORT |
+        Request::HEADER_X_FORWARDED_PROTO |
+        Request::HEADER_X_FORWARDED_AWS_ELB;
 }
 
